@@ -1,0 +1,24 @@
+name: Deploy PHP/Static Site to Somee
+on:
+  push:
+    branches:
+      - master  # Hoặc 'master' tùy tên nhánh chính của bạn
+
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PSW }}
+        server-dir: /www.DH52200329.somee.com/  # Thay đúng đường dẫn thư mục gốc trên Somee
+        exclude: | # Các file không muốn upload
+          **/.git*
+          **/.github*
+          README.md
