@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    Trang 12
+    Trang 1
 </body>
 </html>
